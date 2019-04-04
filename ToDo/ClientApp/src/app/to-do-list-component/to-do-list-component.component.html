@@ -1,0 +1,23 @@
+<div *ngIf="toDos" class="container">
+  <div class="text-center">
+    <a [routerLink]="['/add-to-do']" class="btn btn-success btn-sm">Add a TODO</a>
+  </div>
+</div>
+<div class="container ">
+  <div class="text-center">
+    <ul *ngIf="toDos" class="list-group list-group-flush">
+      <li *ngFor="let toDo of toDos" class="list-group-item">
+        {{toDo.name}}
+      </li>
+    </ul>
+    <div *ngIf="!toDos">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">No TODOs</h5>
+          <p class="card-text">Click button below to addd one.</p>
+          <a [routerLink]="['/add-to-do']" class="btn btn-primary btn-sm">Add a TODO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
