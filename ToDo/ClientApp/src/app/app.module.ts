@@ -12,6 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ToDoComponentComponent } from './to-do-component/to-do-component.component';
 import { ToDoListComponentComponent } from './to-do-list-component/to-do-list-component.component';
 import { AddToDoComponent } from './add-to-do-component/add-to-do-component.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AddToDoComponent } from './add-to-do-component/add-to-do-component.comp
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'to-do-list', component: ToDoListComponentComponent },
       { path: 'add-to-do', component: AddToDoComponent}
-    ])
+    ]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
