@@ -9,8 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { ToDoComponentComponent } from './to-do-component/to-do-component.component';
-import { ToDoListComponentComponent } from './to-do-list-component/to-do-list-component.component';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { AddToDoComponent } from './add-to-do-component/add-to-do-component.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -22,8 +21,7 @@ import { environment } from '../environments/environment';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ToDoComponentComponent,
-    ToDoListComponentComponent,
+    ToDoListComponent,
     AddToDoComponent
   ],
   imports: [
@@ -35,7 +33,7 @@ import { environment } from '../environments/environment';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'to-do-list', component: ToDoListComponentComponent },
+      { path: 'to-do-list', component: ToDoListComponent },
       { path: 'add-to-do', component: AddToDoComponent}
     ]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
