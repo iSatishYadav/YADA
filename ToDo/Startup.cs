@@ -26,6 +26,14 @@ namespace ToDoApp
             {
                 opt.UseSqlServer(Configuration["ToDoContext"]);                
             });
+            services.AddCors(setup =>
+            {
+                setup.AddPolicy("ApiCorsPolicy", pol =>
+                {
+                    pol.WithOrigins("http://127.0.0.1:8080");
+                    pol.WithHeaders("Content-Type");
+                });
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -52,7 +60,7 @@ namespace ToDoApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseCors("ApiCorsPolicy");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

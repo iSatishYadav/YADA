@@ -8,7 +8,7 @@ import { ToDoService } from '../to-do.service';
 })
 export class ToDoListComponentComponent implements OnInit {
 
-  public toDos: any[];
+  public toDos: any;
 
   constructor(private toDoService: ToDoService) { }
 
@@ -19,10 +19,12 @@ export class ToDoListComponentComponent implements OnInit {
   ngOnInit() {
     this.toDoService
       .getAllToDoes()
-      .subscribe((todos: any[]) => {
-        this.toDos = todos;
+      .then(todos => {
+        this.toDos = todos.reduce((a, c) => a.concat(c));
         this.log('All TODOs:', todos);
+      })
+      .catch(error => {
+        console.error(error);
       });
   }
-
 }

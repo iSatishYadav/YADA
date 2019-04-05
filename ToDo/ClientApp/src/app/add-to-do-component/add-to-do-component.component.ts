@@ -22,9 +22,11 @@ export class AddToDoComponent implements OnInit {
     console.log('Creating todo', this.toDoForm);
     this.toDoService
       .addToDo({ name: this.toDoForm.get('name').value })
-      .subscribe(response => {
+      .then(response => {
         this.router.navigate(['/to-do-list']);
-      }, error => console.error('Error posting', error));
+      })
+      .catch(error => {
+        console.error('Error posting', error);
+      });
   }
-
 }
