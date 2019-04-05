@@ -55,11 +55,11 @@ export class ToDoService {
     console.log('Getting all items to sync.');
     allItems.forEach((item) => {
       //TODO: send items to backend
-      console.log(`ToDo ${item.id} - ${item.name} sending to backend.`);
+      console.log(`ToDo ${item.uniqueId} - ${item.name} sending to backend.`);
       this.addToDo({ name: item.name })
         .then(data => {
-          this.dbService.deleteFromDatabase(item.id).then(() => {
-            console.log(`ToDo ${item.id} - ${item.name} deleted from local database.`);
+          this.dbService.deleteFromDatabase(item.uniqueId).then(() => {
+            console.log(`ToDo ${item.uniqueId} - ${item.name} deleted from local database.`);
           })
         })
         .catch(e => {
