@@ -11,8 +11,8 @@ export class ToDoService {
   private headers: HttpHeaders;
 
   constructor(private httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string, private readonly onlineService: OnlineService, private dbService: IndexedDbService) {
-    //this.apiBaseUrl = baseUrl + '/api/todo';
-    this.apiBaseUrl = 'https://localhost:44397' + '/api/todo';
+    this.apiBaseUrl = baseUrl + '/api/todo';
+    //this.apiBaseUrl = 'https://localhost:44397' + '/api/todo';
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.registetrToEvents(onlineService);
     this.dbService.createDatabase();
